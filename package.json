@@ -1,0 +1,23 @@
+{
+  "name": "walkdenton-serverless",
+  "version": "0.0.4",
+  "description": "",
+  "author": "bbttxu <adamkrawiec@gmail.com>",
+  "main": "functions/__main__.js",
+  "dependencies": {
+    "sanctuary": "^0.15.0"
+  },
+  "private": true,
+  "stdlib": {
+    "build": "faaslang",
+    "name": "bbttxu/walkdenton-serverless",
+    "timeout": 10000,
+    "personalize": {
+      "keys": [],
+      "user": []
+    }
+  },
+  "devDependencies": {
+    "lib.cli": "4.4.2"
+  }
+}
