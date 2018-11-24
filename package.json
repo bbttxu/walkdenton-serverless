@@ -1,6 +1,6 @@
 {
   "name": "walkdenton-serverless",
-  "version": "0.0.4",
+  "version": "0.1.1",
   "description": "",
   "author": "bbttxu <adamkrawiec@gmail.com>",
   "main": "functions/__main__.js",

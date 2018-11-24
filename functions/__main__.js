@@ -7,11 +7,9 @@
 
 const inter = require("../data/inter_lite.json");
 
-const filterLongitudeLatitude = require("../lib/filterLongitudeLatitudeD");
+const filterLongitudeLatitude = require("../lib/filterLongitudeLatitude");
 
 module.exports = (longitude = 0, latitude = 0, context, callback) => {
-  console.log("hi");
-
   const start = Date.now();
   const DELTA = 0.003;
 
