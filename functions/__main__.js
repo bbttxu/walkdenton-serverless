@@ -5,12 +5,12 @@
  * @returns {string}
  */
 
-const inter = require('../data/inter_lite.json');
+const inter = require("../data/inter_lite.json");
 
-const filterLongitudeLatitude = require('../lib/filterLongitudeLatitude');
+const filterLongitudeLatitude = require("../lib/filterLongitudeLatitudeD");
 
 module.exports = (longitude = 0, latitude = 0, context, callback) => {
-  console.log('hi');
+  console.log("hi");
 
   const start = Date.now();
   const DELTA = 0.003;
@@ -22,21 +22,22 @@ module.exports = (longitude = 0, latitude = 0, context, callback) => {
   const maxLongitude = parseFloat(longitude) + DELTA;
 
   const foo = filterLongitudeLatitude({
-    longitude: {min: minLongitude, max: maxLongitude},
-    latitude: {min: minLatitude, max: maxLatitude},
+    longitude: { min: minLongitude, max: maxLongitude },
+    latitude: { min: minLatitude, max: maxLatitude }
   })(inter);
 
   callback(null, {
     count: foo.length,
     data: foo,
+    n: foo.length,
     timing: {
       ms: Date.now() - start,
-      start,
+      start
     },
     params: {
       latitude,
       longitude,
-      delta: DELTA,
-    },
+      delta: DELTA
+    }
   });
 };
