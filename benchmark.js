@@ -6,6 +6,7 @@ const A = require("./lib/filterLongitudeLatitudeA");
 const B = require("./lib/filterLongitudeLatitudeB");
 const C = require("./lib/filterLongitudeLatitudeC");
 const D = require("./lib/filterLongitudeLatitudeD");
+const E = require("./lib/filterLongitudeLatitudeE");
 
 const data = require("./data/inter_lite.json");
 
@@ -30,6 +31,9 @@ suite
   })
   .add("D", function() {
     D(constraints)(data);
+  })
+  .add("E", function() {
+    E(constraints)(data);
   })
   // add listeners
   .on("cycle", function(event) {
