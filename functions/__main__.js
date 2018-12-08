@@ -5,22 +5,9 @@
  * @returns {string}
  */
 
-const lib = require('lib');
+const {hash} = require('rsvp');
 
-const {Promise, all, hash} = require('rsvp');
-
-const ill = context => functionName => params =>
-  new Promise((resolve, reject) => {
-    lib[`${context.service.identifier}.${functionName}`](
-      params,
-      (error, result) => {
-        if (error) {
-          reject(error);
-        }
-        resolve(result);
-      },
-    );
-  });
+const ill = require('../lib/ill');
 
 module.exports = (longitude = 0, latitude = 0, context, callback) =>
   hash({
