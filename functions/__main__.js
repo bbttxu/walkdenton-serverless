@@ -5,37 +5,27 @@
  * @returns {string}
  */
 
-const inter = require("../data/inter_lite.json");
+const lib = require('lib');
 
-const filterLongitudeLatitude = require("../lib/filterLongitudeLatitude");
+const {Promise, all, hash} = require('rsvp');
 
-module.exports = (longitude = 0, latitude = 0, context, callback) => {
-  const start = Date.now();
-  const DELTA = 0.003;
-
-  const minLatitude = parseFloat(latitude) - DELTA;
-  const maxLatitude = parseFloat(latitude) + DELTA;
-
-  const minLongitude = parseFloat(longitude) - DELTA;
-  const maxLongitude = parseFloat(longitude) + DELTA;
-
-  const foo = filterLongitudeLatitude({
-    longitude: { min: minLongitude, max: maxLongitude },
-    latitude: { min: minLatitude, max: maxLatitude }
-  })(inter);
-
-  callback(null, {
-    count: foo.length,
-    data: foo,
-    n: foo.length,
-    timing: {
-      ms: Date.now() - start,
-      start
-    },
-    params: {
-      latitude,
-      longitude,
-      delta: DELTA
-    }
+const ill = context => functionName => params =>
+  new Promise((resolve, reject) => {
+    lib[`${context.service.identifier}.${functionName}`](
+      params,
+      (error, result) => {
+        if (error) {
+          reject(error);
+        }
+        resolve(result);
+      },
+    );
   });
-};
+
+module.exports = (longitude = 0, latitude = 0, context, callback) =>
+  hash({
+    streets: ill(context)('streets')({longitude, latitude}),
+    intersections: ill(context)('intersections')({latitude, longitude}),
+  })
+    .then(result => callback(null, result))
+    .catch(callback);

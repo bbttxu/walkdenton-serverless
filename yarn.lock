@@ -234,7 +234,7 @@ lib.cli@4.4.2:
     stream "0.0.2"
     tar-stream "^1.5.2"
 
-lib@^3.0.2:
+lib@3.0.2, lib@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/lib/-/lib-3.0.2.tgz#dd1e4f5a182fcebfee89484ff10fdfdd1508674e"
   integrity sha1-3R5PWhgvzr/uiUhP8Q/f3RUIZ04=
@@ -332,6 +332,11 @@ restore-cursor@^1.0.1:
   dependencies:
     exit-hook "^1.0.0"
     onetime "^1.0.0"
+
+rsvp@4.8.4:
+  version "4.8.4"
+  resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.8.4.tgz#b50e6b34583f3dd89329a2f23a8a2be072845911"
+  integrity sha512-6FomvYPfs+Jy9TfXmBpBuMWNH94SgCsZmJKcanySzgNNP6LjWxBvyLTa9KaMfDDM5oxRfrKDB0r/qeRsLwnBfA==
 
 run-async@^0.1.0:
   version "0.1.0"

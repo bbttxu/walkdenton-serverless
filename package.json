@@ -4,8 +4,13 @@
   "description": "",
   "author": "bbttxu <adamkrawiec@gmail.com>",
   "main": "functions/__main__.js",
+  "scripts": {
+    "setup": "yarn install --pure-lockfile"
+  },
   "dependencies": {
+    "lib": "3.0.2",
     "ramda": "0.26.0",
+    "rsvp": "4.8.4",
     "sanctuary": "0.15.0"
   },
   "private": true,
