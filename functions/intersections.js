@@ -2,6 +2,7 @@
  * A basic Intersection function
  * @param {float} longitude
  * @param {float} latitude
+ * @param {integer} count
  * @returns {string}
  */
 
@@ -13,7 +14,13 @@ const filterLongitudeLatitude = require("../lib/filterLongitudeLatitude");
 
 const distanceFrom = require("../lib/distanceFrom");
 
-module.exports = (longitude = 0, latitude = 0, context, callback) => {
+module.exports = (
+  longitude = 0,
+  latitude = 0,
+  count = 5,
+  context,
+  callback
+) => {
   const start = Date.now();
   const DELTA = 0.002;
 
@@ -35,7 +42,7 @@ module.exports = (longitude = 0, latitude = 0, context, callback) => {
     return intersection;
   }, foo);
 
-  const baz = take(10, sortBy(prop("distance"), bar));
+  const baz = take(count, sortBy(prop("distance"), bar));
 
   callback(null, {
     data: baz,
@@ -47,6 +54,7 @@ module.exports = (longitude = 0, latitude = 0, context, callback) => {
     params: {
       latitude,
       longitude,
+      count,
       delta: DELTA
     }
   });
